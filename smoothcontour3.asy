@@ -277,8 +277,6 @@ patch patchwithnormals(path3 external, triple[] u0normals, triple[] u1normals,
   if (solution.length == 0) { // if the matrix was singular
     write("Warning: unable to solve matrix for specifying normals "
 	  + "on bezier patch. Using standard method.");
-    write(matrix);
-    write(rightvector);
     return patch(external);
   }
   
@@ -726,7 +724,6 @@ path3 bisector(path3 edgecycle, int[] savevertices) {
     }
   }
   if (chosenindex == -1) {
-    write("no good bisector found.");
     savevertices.push(0);
     savevertices.push(3);
     return pathbetween(edgecycle, 0, 3);
@@ -1515,6 +1512,7 @@ struct gridwithzeros {
       surface.append(toappend);
       if (alias(reportactive, null)) write(stdout, '.');
     }
+    if (alias(reportactive, null)) write(stdout, '\n');
     return surface;
   };
 }
