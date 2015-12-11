@@ -599,7 +599,9 @@ string operator cast(positionedvector vv) {
 real angledegrees(triple a, triple b) {
   real lengthprod = abs(a) * abs(b);
   if (lengthprod == 0) return 0;
-  return aCos(dot(a,b) / lengthprod);
+  real dotprod = dot(a, b);
+  lengthprod = max(lengthprod, abs(dotprod));
+  return aCos(dotprod / lengthprod);
 }
 
 // A path (single curved segment) between two points. At each point
